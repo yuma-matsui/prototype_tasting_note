@@ -2,6 +2,6 @@
   path = api
   url = https://github.com/yuma-matsui/prototype_tasting_note_api
 
-[submodule "frontend"]
-  path = frontend
-  url = https://github.com/yuma-matsui/prototype_tasting_note_frontend
+[submodule "front"]
+  path = front
+  url = https://github.com/yuma-matsui/prototype_tasting_note_front
