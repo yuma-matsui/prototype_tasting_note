@@ -16,27 +16,29 @@ commands:
     steps:
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-{{ checksum "front/package.json" }}
       - run:
           name: install-packages
           command: npm install
+          working_directory: front
       - save_cache:
-          key: v1-dependencies-{{ checksum "package.json" }}
+          key: v1-dependencies-{{ checksum "front/package.json" }}
           paths:
-            - node_modules
+            - front/node_modules
 
 jobs:  
   build_and_deploy:
     executor: default
-    working_directory: ~/repo/front
+    working_directory: ~/repo
     steps:
       - checkout
       - npm_install
       - run:
           name: build
           command: npm run build
+          working_directory: front
       - aws-s3/sync:
-          from: build
+          from: front/build
           to: s3://tasting-note-staging
 
 workflows:
@@ -45,4 +47,4 @@ workflows:
       - build_and_deploy:
           filters:
             branches:
-              ignore: main
+              only: main
