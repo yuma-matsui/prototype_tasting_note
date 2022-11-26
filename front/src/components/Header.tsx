@@ -11,11 +11,13 @@ const Header: FC<Props> = ({ children }) => (
       <nav>
         <ul>
           <li>
-            <Link to="/">Helloページへ</Link>
-            <br />
+            <Link to="/">Welcomeページへ</Link>
+          </li>
+          <li>
             <Link to="/good_night">Good Nightページへ</Link>
-            <br />
-            <Link to="/tasks">Task一覧ページへ</Link>
+          </li>
+          <li>
+            <Link to="/good_morning">Good Morningページへ</Link>
           </li>
         </ul>
       </nav>
